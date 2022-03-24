@@ -16,6 +16,11 @@ public class MainFrame extends javax.swing.JFrame {
     private JButton btnAbrir;
     private JButton btnEsvaziar;
 
+    public static void main(String[] args) {
+
+        MainFrame myFrame = new MainFrame();
+        iniciaLixeira();
+    }
     public MainFrame() {
         setContentPane(mainPanel);
         setTitle("Lixeira");
@@ -26,34 +31,62 @@ public class MainFrame extends javax.swing.JFrame {
         btnAbrir.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                enviarMensagem(tfMensagem.getText());
+              //  enviarMensagem(tfMensagem.getText());
+                abrirLixeira();
             }
         });
         btnEsvaziar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-
+                esvaziarLixeira();
             }
         });
         btnEncher.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-
+                colocarLixo();
             }
         });
         btnTravar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-
+                travarLixeira();
             }
         });
     }
 
-    public static void main(String[] args) {
-
-        MainFrame myFrame = new MainFrame();
-        iniciaLixeira();
+    private void travarLixeira() {
+        try {
+            String msg = "Lixeira Bloquada";
+            PrintStream saida = new PrintStream(lixeira.getOutputStream());
+            saida.println(msg);
+        } catch (IOException e) {
+            System.out.println("Erro ao enviar mensagem");
+        }
     }
+
+    private void colocarLixo() {
+        try {
+            String msg = "Lixeira recebeu lixo";
+            PrintStream saida = new PrintStream(lixeira.getOutputStream());
+            saida.println(msg);
+        } catch (IOException e) {
+            System.out.println("Erro ao enviar mensagem");
+        }
+    }
+
+    private void esvaziarLixeira() {
+        try {
+            String msg = "Lixeira vazia";
+            PrintStream saida = new PrintStream(lixeira.getOutputStream());
+            saida.println(msg);
+        } catch (IOException e) {
+            System.out.println("Erro ao enviar mensagem");
+        }
+
+    }
+
+
     private static void iniciaLixeira() {
         try {
             lixeira = new Socket("127.0.0.1", 3334);
@@ -71,4 +104,14 @@ public class MainFrame extends javax.swing.JFrame {
             System.out.println("Erro ao enviar mensagem");
         }
     }
+    private static void abrirLixeira() {
+        try {
+            String msg = "Lixeira Aberta";
+            PrintStream saida = new PrintStream(lixeira.getOutputStream());
+            saida.println(msg);
+        } catch (IOException e) {
+            System.out.println("Erro ao enviar mensagem");
+        }
+    }
+
 }
