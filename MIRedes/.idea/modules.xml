@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Lixeira/Lixeira.iml" filepath="$PROJECT_DIR$/Lixeira/Lixeira.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LixeiraSwing/LixeiraSwing.iml" filepath="$PROJECT_DIR$/LixeiraSwing/LixeiraSwing.iml" />
       <module fileurl="file://$PROJECT_DIR$/MIRedes.iml" filepath="$PROJECT_DIR$/MIRedes.iml" />
       <module fileurl="file://$PROJECT_DIR$/Servidor/Servidor.iml" filepath="$PROJECT_DIR$/Servidor/Servidor.iml" />
     </modules>
