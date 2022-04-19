@@ -12,6 +12,7 @@
     <bytecodeTargetLevel>
       <module name="Cliente" target="11" />
       <module name="Lixeira" target="11" />
+      <module name="ServidorRest" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

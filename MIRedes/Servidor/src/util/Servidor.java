@@ -17,6 +17,9 @@ public class Servidor extends Thread {
     private InputStreamReader inr;
     private BufferedReader bfr;
 
+    public Servidor(){
+
+    }
     /**
      * Método construtor
      * @param con do tipo Socket
@@ -77,12 +80,12 @@ public class Servidor extends Thread {
         }
     }
 
-    public static void main(String[] args) {
+    public static void iniciarServidor() {
 
         try{
             //Cria os objetos necessário para instânciar o servidor
             JLabel lblMessage = new JLabel("Porta do Servidor:");
-            JTextField txtPorta = new JTextField("12345");
+            JTextField txtPorta = new JTextField("1234");
             Object[] texts = {lblMessage, txtPorta };
             JOptionPane.showMessageDialog(null, texts);
             server = new ServerSocket(Integer.parseInt(txtPorta.getText()));
@@ -92,15 +95,38 @@ public class Servidor extends Thread {
 
             while(true){
                 System.out.println("Aguardando conexão...");
-                Socket con = server.accept();
-                System.out.println("Cliente conectado...");
-                Thread t = new Servidor(con);
-                t.start();
+                try {
+                    Socket socket = server.accept();
+                    InputStream input = socket.getInputStream();
+                    OutputStream output = socket.getOutputStream();
+                    // Realiza o parse da requisição recebida
+                    String requestString = convertStreamToString(input);
+                    // Fecha a conexão
+                    socket.close();
+                    System.out.println("Cliente conectado...");
+                    Thread t = new Servidor(socket);
+                    t.start();
+                }catch (Exception e ) {
+                    System.out.println("Erro ao executar o Servidor");
+                    continue;
+                }
+
             }
 
         }catch (Exception e) {
 
             e.printStackTrace();
         }
+    }
+
+    public static String convertStreamToString(InputStream is) throws Exception {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+        StringBuilder sb = new StringBuilder();
+        String line = null;
+        while ((line = reader.readLine()) != null) {
+            sb.append(line + "\n");
+        }
+        is.close();
+        return sb.toString();
     }
 }
