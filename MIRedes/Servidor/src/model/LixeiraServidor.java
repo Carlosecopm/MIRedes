@@ -7,6 +7,9 @@ public class LixeiraServidor {
     private boolean disponivel = true;
     private boolean controle = true;
 
+    public LixeiraServidor (){
+
+    }
     public LixeiraServidor(String nome, float capacidade, float quantidade, boolean disponivel, boolean controle) {
         this.nome = nome;
         this.capacidade = capacidade;

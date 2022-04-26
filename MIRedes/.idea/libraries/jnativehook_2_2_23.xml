@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="jnativehook-2.2.23">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../Lixeira_MIRedes/jnativehook-2.2.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

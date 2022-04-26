@@ -5,5 +5,17 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="jdk" jdkName="11" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library name="Lixeira_MIRedes">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/Lixeira_MIRedes" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/Lixeira_MIRedes/src" />
+        </SOURCES>
+        <jarDirectory url="file://$MODULE_DIR$/Lixeira_MIRedes" recursive="false" />
+      </library>
+    </orderEntry>
   </component>
 </module>
