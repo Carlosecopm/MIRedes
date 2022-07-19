@@ -23,7 +23,7 @@ public class DataStore {
         lixeiraMap.put("lixeira3", new LixeiraServidor("lixeira3", 30, 20, true, true));
     }
 
-    public LixeiraServidor getPerson(String name) {
+    public LixeiraServidor getLixeira(String name) {
         return lixeiraMap.get(name);
     }
 

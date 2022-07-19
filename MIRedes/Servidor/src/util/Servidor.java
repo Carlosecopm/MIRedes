@@ -102,8 +102,11 @@ public class Servidor extends Thread{
 
         int responseCode = connection.getResponseCode();
         if(responseCode == 200){
-            String response = "";
-            Scanner scanner = new Scanner(connection.getInputStream());
+            String json = "{\n";
+            json += "\"nome\": " + JSONObject.quote(lixeiraServidor.getName()) + ",\n";
+            json += "\"porcentagem\": " + JSONObject.quote(lixeiraServidor.getPorcentagem()) + ",\n";
+            json += "}";
+            response.getOutputStream().println(json);
             while(scanner.hasNextLine()){
                 response += scanner.nextLine();
                 response += "\n";
@@ -121,9 +124,9 @@ public class Servidor extends Thread{
 
         connection.setRequestMethod("POST");
 
-        String postData = "name=" + URLEncoder.encode(nome);
-        postData += "&about=" + URLEncoder.encode(about);
-        postData += "&birthYear=" + birthYear;
+        String postData = "nome=" + URLEncoder.encode(nome);
+        postData += "&capacidade=" + URLEncoder.encode(about);
+        postData += "&disponivel=" + birthYear;
 
         connection.setDoOutput(true);
         OutputStreamWriter wr = new OutputStreamWriter(connection.getOutputStream());
